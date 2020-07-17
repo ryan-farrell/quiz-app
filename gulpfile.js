@@ -20,6 +20,7 @@ function clean(cb) {
 	return del(['public/dist',
 				'public/audio',
 				'public/img',
+				'public/pages',
 				'public/index*'
 				], cb);
 }
@@ -47,6 +48,13 @@ function nodeModuleFilesToCopy(cb) {
 function copyIndex(cb) {
 	src('src/index*')
     .pipe(dest('public/'));
+    cb();    
+}
+
+// Copy html pages to dist folder
+function copyPages(cb) {
+	src('src/pages/*')
+    .pipe(dest('public/pages'));
     cb();    
 }
 
@@ -88,6 +96,7 @@ function lessCompileAndMin(cb) {
 exports.build = series( clean,
 						nodeModuleFilesToCopy,
 						copyIndex,
+						copyPages,
 						copyAudio,
 						imageMin,
 						jsMin,
@@ -97,5 +106,5 @@ exports.build = series( clean,
 exports.watch = function() {
 	// Two watch tasks setup looking at less & js files respectively 
 	watch('src/less/*.less', lessCompileAndMin);
-	watch('src/js/*.js', minifyJS);
+	watch('src/js/*.js', jsMin);
 };
