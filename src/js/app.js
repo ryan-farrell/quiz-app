@@ -46,7 +46,7 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    (window.location.href != "http://projects/quiz-app/public/pages/end.html") ? getNewQuestion() : null;
+    (window.location.href == "http://projects/quiz-app/public/pages/game.html") ? getNewQuestion() : null;
 };
 
 getNewQuestion = () => {
