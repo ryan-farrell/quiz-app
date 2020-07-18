@@ -27,17 +27,17 @@ function clean(cb) {
 
 // Load any JS and CSS files required from any dependencies
 function nodeModuleFilesToCopy(cb) {
-   
+
 	src('node_modules/@fortawesome/fontawesome-free/js/all.min.js')
 	.pipe(rename('fontawesome.min.js'))
     .pipe(dest('public/dist/assets/js'));
-	
+
 	src('node_modules/jquery/dist/jquery.min.js')
 	.pipe(dest('public/dist/assets/js'));
-	
+
 	src('node_modules/@fortawesome/fontawesome-free/webfonts/*')
     .pipe(dest('public/dist/assets/webfonts'))
-   
+
 	src('node_modules/@fortawesome/fontawesome-free/css/all.min.css')
 	.pipe(rename('fontawesome.min.css'))
     .pipe(dest('public/dist/assets/css'));
