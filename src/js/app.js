@@ -1,5 +1,6 @@
 const question = document.getElementById('question');
-const questionCounterText = document.getElementById('questionCounter');
+const progressText = document.getElementById('progressText');
+const progressBarFull = document.getElementById('progressBarFull');
 const choices = Array.from(document.getElementsByClassName('choice-text'));
 const scoreText = document.getElementById('score');
 
@@ -45,16 +46,19 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    getNewQuestion();
+    (window.location.href != "http://projects/quiz-app/public/pages/end.html") ? getNewQuestion() : null;
 };
 
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        localStorage.setItem('mostRecentScore', score);
         // Go to the end page
-        return window.location.assign('/end.html');
+        return window.location.assign('end.html');
     }
     questionCounter++;
-    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+    progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
