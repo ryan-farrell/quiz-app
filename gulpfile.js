@@ -21,6 +21,7 @@ function clean(cb) {
 				'public/audio',
 				'public/img',
 				'public/pages',
+				'public/json',
 				'public/index*'
 				], cb);
 }
@@ -55,6 +56,13 @@ function copyIndex(cb) {
 function copyPages(cb) {
 	src('src/pages/*')
     .pipe(dest('public/pages'));
+    cb();    
+}
+
+// Copy JSON files to dist folder
+function copyJSON(cb) {
+	src('src/json/*')
+    .pipe(dest('public/json'));
     cb();    
 }
 
@@ -97,6 +105,7 @@ exports.build = series( clean,
 						nodeModuleFilesToCopy,
 						copyIndex,
 						copyPages,
+						copyJSON,
 						copyAudio,
 						imageMin,
 						jsMin,

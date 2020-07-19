@@ -16,12 +16,13 @@
 <body>
     <div class="container">
         <div id="end" class="flex-center flex-column">
-            <p>Your Score</p>
+            <p class="hud-prefix">Your Score</p>
             <h1 id="finalScore"></h1>
             <form>
                 <input type="text" name="username" id="username" placeholder="Your Name">
                 <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
             </form>
+            <a href="../index.html" class="btn">Go Home</a>
         </div>		
     </div>
     <script src="../dist/assets/js/all.min.js"></script>
