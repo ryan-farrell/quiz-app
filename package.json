@@ -25,7 +25,7 @@
     "gulp-less": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-uglify-es": "^2.0.0",
-    "terser": "^4.8.0"
+    "terser": "^4.8.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
